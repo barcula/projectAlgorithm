@@ -1,6 +1,5 @@
 # Input/Output
 Basics of processorientated design / FH Potsdam / Summer Semester 2015
 
-This repository contains the progress of the developed 
-programming code from the above mentioned Seminar at the FH Potsdam. 
-The Course is led by Fabian Morón Zirfas.
+This repository contains resulting projects from the above mentioned course at the FH Potsdam. 
+The course is led by Fabian Morón Zirfas.
