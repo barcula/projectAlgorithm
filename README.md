@@ -1,8 +1,8 @@
-# 2015-SoSe-11EG-B-input-output
+2015-SoSe-11EG-B-input-output
 =============================
 Basics of processorientated design / FH Potsdam / Summer Semester 2015
 This repo contains resulting projects from the above mentioned course by Fabian Morón Zirfas at the FH Potsdam.
-=============================
+
 ##License  
 
 If not further noticed  
