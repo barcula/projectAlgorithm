@@ -17,14 +17,23 @@ strokeWeight(1)
 
 background(0,0,0)
 
-for contour in contours:
-    stroke(255, 255, 255)
-    contour.draw()
+# for contour in contours:
+#     stroke(255, 255, 255)
+#     contour.draw()
+scaler = 1.5
+stroke(255)
+pushMatrix()
+translate(100,10)
+for c in range(0,len(contours)):
+    countour = contours[c]
+#     print countour
+    points = countour.getPolygonApproximation().getPoints()
+    beginShape()
+    for p in points:
+        vertex(p.x*scaler, p.y*scaler)
+    endShape(CLOSE)
+popMatrix()
+
 
 save("img/contours.jpg")
-
-
-#    with beginShape():
-#        for point in contour.getPolygonApproximation().getPoints():
-#            vertex(point.x, point.y)
 
