@@ -1,8 +1,8 @@
 add_library('opencv_processing')
 
 
-age = int(random(12, 75))  # random age equals amount of circles
-list = []  # list contains coordinates of circles
+age = int(random(12, 90))  # random age equals amount of circles
+blobList = []  # list contains coordinates of circles
 
 
 def setup():
@@ -18,16 +18,16 @@ def setup():
         y1 = int(random(0, height))
         r = random(10, 90)  # radius of the circles
         # store generated values in array called list
-        list.append([x1, y1, r])
+        blobList.append([x1, y1, r])
 
-        for j in range(0, len(list)):
+        for j in range(0, len(blobList)):
             radius = random(20, 80)
-            ellipse(list[j][0], list[j][1], list[j][2], list[j][2])
+            ellipse(blobList[j][0], blobList[j][1], blobList[j][2], blobList[j][2])
             
     filter(BLUR,30)
     filter(THRESHOLD,0.3)
     
-    save("img/test.jpg")
+    save(str(age) + ".jpg")
 
 print(age)
 
