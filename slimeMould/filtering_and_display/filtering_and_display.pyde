@@ -5,11 +5,14 @@ Simple empty sketch
 # add the needed libs
 add_library('video')
 add_library('opencv_processing')
+import json
 
 # declare the global variables we need
 video = None
 opencv = None
-font = None
+points = []
+brightPixels = []
+frameCounty = 0
 
 # setup is run once
 def setup():
@@ -17,27 +20,38 @@ def setup():
 #     using the global objects
     global video
     global opencv
-    global font
-    font = createFont("Arial", 12)
-    textFont(font)
+    global frameCounty
     textAlign(LEFT)
 #     create a new Video object from our video
-    video = Movie(this, "dummy.mov")
+    video = Movie(this, "slimeEmma.mp4")
+    video.frameRate(5)
 #     create a new opencv object
 #     in the size of the video
-    opencv = OpenCV(this, 960, 540)
+    opencv = OpenCV(this, 798, 710)
 #     setup size of the sketch
-    size(960, 540)
+    size(798, 710)
 #     now loop and play the video
-    video.loop()
     video.play()
 #     we love hsb
     colorMode(HSB, 360, 100, 100, 100)
     background(0, 0, 100)
     print "End of def setup():"
+    
+    frameCounty = 0
 
 # now our loop
 def draw():
+    
+    global frameCounty
+    global video
+    
+    video.speed(0.2)
+    
+    if (video.available()):
+        video.read()
+    
+    count = 0
+    frameCounty = frameCounty +1
 
     ##### CAPTURE #####
 #     load the current frame into opencv
@@ -46,31 +60,28 @@ def draw():
     # get a snapshot for displaying the filtered images
     opencv.gray()  # make it grayscale
     grey_image = opencv.getSnapshot()
-    opencv.contrast(3)  # raise contrast
+    opencv.contrast(0.5)  # raise contrast
     contrast_image = opencv.getSnapshot()
-    opencv.threshold(240)  # clip all below 240
+    opencv.threshold(50)  # clip all below 240
     threshold_image = opencv.getSnapshot()
-    ##### ANALYSE #####
-    # do some nasty detection here
-    ##### DISPLAY #####
+    
+    for x in range(threshold_image.width):
+        for y in range(threshold_image.height):
+            if threshold_image.get(x,y) != -16777216:
+                count += 1
+    brightPixels.append(count)
+    print count
+    
+    image(threshold_image, video.width / 1000, video.height / 1000,
+          threshold_image.width, threshold_image.height)
+    
+    if video.time() == video.duration():
+        with open ("/Users/enjoi/GitHub/input-output/slimeMould/filtering_and_display/^Output.txt", "w") as text_file:
+            print 'success'
+            text_file.write(json.dumps(brightPixels))
+            print "Frame Count: " + str(frameCounty)
+            exit()
+        
+        
 
-    # display the sources
-    image(video, 0, 0, video.width / 2, video.height / 2)
-    text("source video", 10, 15)
-
-    image(grey_image, 0, video.height / 2,
-          grey_image.width / 2, grey_image.height / 2)
-    text("grey video", 10, video.height / 2 + 15)
-
-    image(contrast_image, video.width / 2, 0,
-          contrast_image.width / 2, contrast_image.height / 2)
-    text("contrast video", video.width / 2 + 10, 15)
-
-    image(threshold_image, video.width / 2, video.height / 2,
-          threshold_image.width / 2, threshold_image.height / 2)
-    text("threshold video", video.width / 2+ 10, video.height / 2 + 15)
-
-
-def movieEvent(m):
-    m.read()
 
