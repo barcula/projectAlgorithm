@@ -7,7 +7,7 @@ The core of the analog version of the algorithm is the generation of random wax 
 
 ![Random Wax Drops] (http://54593925.swh.strato-hosting.eu/web/fh-potsdam/input-output/weblog/img/algorithm/03/blobs.gif)
 
-The digital result is a realized with python in processing and the openCV library. OpenCV’s blob detection is counting every blob and draws some scaled contours around it. The Work with classes gave me some useful insights on working with programming concepts of object oriented programming.
+The digital result is a realized with python in processing and the openCV library. OpenCV’s blob detection is counting every blob and draws some scaled contours around it. The Work with classes gave me some useful insights on working with programming concepts of object oriented programming. The following results picture one choosen frame with a various number of contours.
 
 ![Final Result] (http://54593925.swh.strato-hosting.eu/web/fh-potsdam/input-output/weblog/img/algorithm/03/contoursAnim.gif)
 
