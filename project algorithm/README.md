@@ -3,11 +3,11 @@ In the first topic of the seminar was the exploration of the concept of algorith
 
 ![Analog Example] (http://54593925.swh.strato-hosting.eu/web/fh-potsdam/input-output/weblog/img/algorithm/01/05.jpg)
 
-The core of the analog version of the algorithm is the generation of random wax drops on a paper based on the age of the executing person. The contours around these drops shall end up in a organic overlaying grid which mesmerizes the viewer. 
+The core of the analog version of the algorithm is the generation of random wax drops on paper based on the age of the executing person. The contours around these drops shall end up in a organic overlaying grid which mesmerizes the viewer. 
 
 ![Random Wax Drops] (http://54593925.swh.strato-hosting.eu/web/fh-potsdam/input-output/weblog/img/algorithm/03/blobs.gif)
 
-The digital result is a realized with python in processing and the openCV library. 
+The digital result is a realized with python in processing and the openCV library. OpenCV’s blob detection is counting every blob and draws some scaled contours around it.
 
 ![Final Result] (http://54593925.swh.strato-hosting.eu/web/fh-potsdam/input-output/weblog/img/algorithm/03/contoursAnim.gif)
 
